@@ -33,11 +33,11 @@ response: {<br>
     success: Boolean,<br>
     message: String<br>
 }<br>
-
-GET - /ledger
-response: [{
-    sender: String,
-    recipient: String,
-    amount: Number,
-    fulfilled: Boolean
-}]
+<br>
+GET - /ledger<br>
+response: [{<br>
+    sender: String,<br>
+    recipient: String,<br>
+    amount: Number,<br>
+    fulfilled: Boolean<br>
+}]<br>
