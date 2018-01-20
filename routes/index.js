@@ -70,6 +70,7 @@ router.post('/request', function(req, res){
       success: true,
         message: "Successfully created ledger"
     }
+    res.send(response);
   })
 });
 
@@ -85,6 +86,10 @@ router.get('/register', function(req, res, next){
 
 router.get('/login', function(req, res, next){
   res.render('login');
+});
+
+router.get('/request', function(req, res, next){
+  res.render('request')
 });
 
 module.exports = router;
