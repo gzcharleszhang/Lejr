@@ -5,8 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://user:lejr@ds263847.mlab.com:63847/lejr", {
-});
+mongoose.connect("mongodb://master:lejr@ds263847.mlab.com:63847/lejr");
 var db = mongoose.connection;
 var mongo = require('mongodb');
 
