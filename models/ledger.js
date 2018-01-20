@@ -16,6 +16,9 @@ var LedgerSchema = mongoose.Schema({
     Fulfilled: {
        type: Boolean,
         default: false
+    },
+    sourceMoneyRequestId: {
+        type: String
     }
 });
 
