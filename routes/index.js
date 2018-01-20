@@ -34,6 +34,7 @@ router.post('/login', function(req, res){
 
   User.find({username: username}, function(err, users){
     if (users.length > 0){
+      var user = users[0];
       if (user.password === password){
         response.success = true;
         response.message = "Successfully Authenticated"
@@ -73,5 +74,8 @@ router.get('/register', function(req, res, next){
   res.render('register');
 });
 
+router.get('/login', function(req, res, next){
+  res.render('login');
+});
 
 module.exports = router;
