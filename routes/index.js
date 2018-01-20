@@ -19,7 +19,9 @@ router.post('/register', function(req, res, next) {
 
     console.log(newUser);
   });
-  
+
 });
+
+
 
 module.exports = router;
