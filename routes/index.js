@@ -15,12 +15,17 @@ router.post('/register', function(req, res, next) {
       username: username
   });
 
+
   User.createUser(user, function(error, newUser){
     if (error) throw error;
 
     console.log(newUser);
+    var response = {
+      success: true,
+        message: "Successfully registered user"
+    };
+    res.send(response);
   });
-  res.redirect('/register');
 });
 
 router.post('/login', function(req, res){
@@ -61,6 +66,10 @@ router.post('/request', function(req, res){
 
   Ledger.createLedger(ledger, function(error, newLedger){
     console.log(newLedger);
+    var response = {
+      success: true,
+        message: "Successfully created ledger"
+    }
   })
 });
 

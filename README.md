@@ -8,6 +8,10 @@ parameters: {
     password: String,
     email: String,
 }
+response: {
+    success: Boolean,
+    message: String
+}
 
 POST - /login
 parameters: {
@@ -24,6 +28,10 @@ parameters: {
     sender: String,
     recipient: String,
     amount: Number
+}
+response: {
+    success: Boolean,
+    message: String
 }
 
 GET - /ledger
