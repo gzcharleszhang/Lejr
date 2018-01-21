@@ -4,9 +4,8 @@ var Schema = mongoose.Schema;
 // Ledger Schema
 
 var LogSchema = mongoose.Schema({
-
     log: {
-        type: String
+        type: JSON
     }
 });
 
