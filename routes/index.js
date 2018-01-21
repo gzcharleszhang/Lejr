@@ -76,7 +76,7 @@ router.post('/request', function(req, res){
   var recipient = req.body.recipient;
   var amount = req.body.amount;
   //var sourceMoneyRequestId = makeid();
-    var sourceMoneyRequestId = 'A';
+    var sourceMoneyRequestId = 'B';
 
     // Set the headers
     var headers = {
