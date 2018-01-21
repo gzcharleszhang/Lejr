@@ -70,6 +70,7 @@ router.post('/request', function(req, res){
 
         return text;
     }
+    var paymentURL;
   var sender = req.body.sender;
   var recipient = req.body.recipient;
   var amount = req.body.amount;
@@ -143,9 +144,9 @@ router.post('/request', function(req, res){
         request(options, function (err, res, body){
             if (!err && res.statusCode === 200) {
                 // Print out the response body
-                console.log(body);
-            } else {
-              console.log(body);
+                var result = JSON.parse(body);
+                console.log(result);
+                paymentURL = result.paymentGatewayUrl;
             }
         })
 
@@ -166,7 +167,7 @@ router.post('/request', function(req, res){
         message: "Successfully created ledger"
     };
 
-    res.send(response);
+    res.send(paymentURL);
   })
 });
 
