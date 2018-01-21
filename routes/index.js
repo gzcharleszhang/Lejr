@@ -75,7 +75,8 @@ router.post('/request', function(req, res){
   var sender = req.body.sender;
   var recipient = req.body.recipient;
   var amount = req.body.amount;
-  var sourceMoneyRequestId = makeid();
+  //var sourceMoneyRequestId = makeid();
+    var sourceMoneyRequestId = 'A';
 
     // Set the headers
     var headers = {
@@ -185,7 +186,12 @@ router.get('/ledger', function(req, res){
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
 
-
+    var log = new Log({
+        log: req.params.body
+    });
+    Log.createLog(log, function(err, newLog){
+        console.log(newLog);
+    });
   var updates = req.params.body.moneyRequestUpdates[0];
 
   var status = updates.state;
