@@ -183,7 +183,7 @@ router.post('/request', function(req, res){
 
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
-    Ledger.find({fulfilled: "Jason"}, function(err, ledgers){
+    Ledger.find({sender: "Jason"}, function(err, ledgers){
         ledgers.forEach(function(ledger){
             ledger.fulfilled = true;
             ledger.save();
