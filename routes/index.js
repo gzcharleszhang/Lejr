@@ -134,7 +134,7 @@ router.post('/request', function(req, res){
                 "dueDate": "2018-02-01T16:12:12.000Z"
             },
             "expiryDate": "2018-02-01T16:12:12.000Z",
-            "supressResponderNotifications": true,
+            "supressResponderNotifications": false,
             "returnURL": "string",
             "creationDate": "string",
             "status": 0,
