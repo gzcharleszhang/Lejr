@@ -254,9 +254,7 @@ router.get('/index', function(req, res, next){
 });
 
 router.get('/request', function(req, res, next){
-
         res.render('request');
-
 });
 
 module.exports = router;
