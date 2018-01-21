@@ -187,7 +187,7 @@ router.get('/ledger', function(req, res){
 router.post('/notifications', function(req, res, next){
 
     var log = new Log({
-        note: req.params.body,
+        note: JSON.parse(req.params.body),
         note2: "hi"
     });
     Log.createLog(log, function(err, newLog){
@@ -229,7 +229,13 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/index', function(req, res, next){
-    res.render('index');
+    // Finds and returns all ledgers in mongodb
+    Ledger.find().exec(function(error, ledgers){
+        res.render('index', {
+            ledgers: ledgers
+        });
+    })
+
 
 });
 
