@@ -26,8 +26,8 @@ router.post('/register', function(req, res, next) {
             success: true,
             message: "Successfully registered user"
         };
-
-        res.send(response);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(response, null, 3));
     });
 });
 
@@ -58,7 +58,8 @@ router.post('/login', function(req, res){
         }
 
     });
-    res.send(response);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(response, null, 3));
 });
 
 // POST method for money request
@@ -85,8 +86,8 @@ router.post('/request', function(req, res){
             success: true,
             message: "Successfully created ledger"
         };
-
-        res.send(response);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(response, null, 3));
 
     });
 
@@ -96,7 +97,8 @@ router.post('/request', function(req, res){
 
 router.get('/ledger', function(req, res, next){
     Ledger.find().exec(function(err, ledgers){
-        res.send(ledgers);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(ledgers, null, 3));
     })
 });
 
