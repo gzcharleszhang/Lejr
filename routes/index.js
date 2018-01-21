@@ -184,16 +184,16 @@ router.get('/ledger', function(req, res){
 
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
-
-  var updates = req.body.moneyRequestUpdates;
-  var status = updates.state;
-  var requestId = updates.sourceMoneyRequestId;
     var log = new Log({
-        log: 'hi'
+        log: JSON.stringify(req.body.moneyRequestUpdates)
     });
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
     });
+  var updates = req.body.moneyRequestUpdates;
+  var status = updates.state;
+  var requestId = updates.sourceMoneyRequestId;
+
   if (status === "COMPLETED"){
     Ledger.find({sourceMoneyRequestId: requestId}, function(err, ledgers){
       var ledger = ledgers[0];
