@@ -1,8 +1,60 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+	height: 100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-image: url("../images/city.jpg");
+    background-position: left;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(245,245,245, 0.5);
+}
+
+h1 {
+    padding-top: 280px;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 100px;
+    text-align: center;
+}
+
+.navbar {
+	background-color: rgba(245,245,245, 0.7);
+}
+
+.nav-item {
+	width: 100%;
+	height: 100%;
+}
+
+.nav-link{
+	width: 100%;
+	height: 100%;
+	padding: 10px 20px;
+}
+
+.navbar-brand {
+	font-family: 'Pacifico', cursive;
+	font-size: 24px;
+	padding: 0px 30px;
+}
+
+.nav-link:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.row , .container{
+	height: inherit;
+}
+
+form {
+    padding-top: 300px;
 }
