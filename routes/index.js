@@ -141,13 +141,14 @@ router.post('/request', function(req, res){
             headers: headers
         };
 
-        request(options, function (err, res, body){
-            if (!err && res.statusCode === 200) {
+        request(options, function (err, resq, body){
                 // Print out the response body
                 var result = JSON.parse(body);
-                console.log(result);
+
                 paymentURL = result.paymentGatewayUrl;
-            }
+            //console.log(paymentURL);
+            console.log(paymentURL);
+            res.send(paymentURL);
         })
 
     });
@@ -167,8 +168,8 @@ router.post('/request', function(req, res){
         message: "Successfully created ledger"
     };
 
-    res.send(paymentURL);
-  })
+  });
+
 });
 
 
@@ -194,8 +195,14 @@ router.post('/notifications', function(req, res, next){
       res.send("success")
     })
   } else {
-
-      res.send("error")
+      Ledger.find({sourceMoneyRequestId: requestId}, function(err, ledgers){
+          var ledger = ledgers[0];
+          ledger.fulfilled = true;
+          ledger.save();
+          console.log(ledger);
+          res.send("success")
+      })
+      //res.send("error")
   }
 });
 
