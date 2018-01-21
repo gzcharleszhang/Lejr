@@ -207,21 +207,21 @@ router.post('/notifications', function(req, res, next){
 
   var status = updates.state;
   var invoiceNumber = updates.moneyRequestDetails.invoice.invoiceNumber;
-
+    var log = new Log({
+        note: invoiceNumber,
+        note2: "hi"
+    });
+    Log.createLog(log, function(err, newLog){
+        console.log(newLog);
+        res.send("success");
+    });
   if (status === "REQUEST_COMPLETED" || status === "REQUEST_FULFILLED"){
     Ledger.find({invoiceNumber: invoiceNumber}, function(err, ledgers){
       var ledger = ledgers[0];
       ledger.fulfilled = true;
       ledger.save();
       console.log(ledger);
-        var log = new Log({
-            note: ledger,
-            note2: "hi"
-        });
-        Log.createLog(log, function(err, newLog){
-            console.log(newLog);
-            res.send("success");
-        });
+
         res.send("success")
     })
   } else {

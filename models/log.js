@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var LogSchema = mongoose.Schema({
     note: {
-        type: JSON
+        type: String
     },
     note2: {
         type: String
