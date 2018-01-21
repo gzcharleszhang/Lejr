@@ -185,14 +185,17 @@ router.get('/ledger', function(req, res){
 
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
-
+    //var updates = req.body.moneyRequestUpdates[0];
     var log = new Log({
-        log: "hi"
+        note: req.body,
+        note2: "hi"
     });
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
+        res.send("success");
     });
 
+/*
   var updates = req.params.body.moneyRequestUpdates[0];
 
   var status = updates.state;
@@ -209,7 +212,7 @@ router.post('/notifications', function(req, res, next){
     })
   } else {
       res.send("error")
-  }
+  }*/
 });
 
 router.get('/register', function(req, res, next){
@@ -226,7 +229,13 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/index', function(req, res, next){
-    res.render('index');
+    // Finds and returns all ledgers in mongodb
+    Ledger.find().exec(function(error, ledgers){
+        res.render('index', {
+            ledgers: ledgers
+        });
+    })
+
 
 });
 
