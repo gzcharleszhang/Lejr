@@ -191,7 +191,7 @@ router.get('/ledger', function(req, res){
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
     var updates = req.body.moneyRequestUpdates;
-    var update = updates[0];
+    var update = updates[1];
     var log = new Log({
         note: update,
         note2: "hi"
