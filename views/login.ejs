@@ -22,7 +22,17 @@
 		<title>Lejr</title>
 	</head>
 	<body>
-		<% include templates/navigation.ejs%>
+		<nav class="navbar navbar-expand-lg navbar-light">
+		  <a class="navbar-brand" href="/login">Lejr</a>
+		    <ul class="navbar-nav">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/register">Register</a>
+		      </li>
+		    </ul>
+		</nav>
 		<div class="container">
 			<div class="row">
 				<h1 class="page-header col-md-6">Lejr</h1>

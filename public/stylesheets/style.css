@@ -25,6 +25,14 @@ h1 {
     text-align: center;
 }
 
+.btn {
+	background-color: rgba(245,245,245, 0.7);
+}
+
+.btn:hover {
+	background-color: rgba(245,245,245, 0.9);
+}
+
 .navbar {
 	background-color: rgba(245,245,245, 0.7);
 }
@@ -56,5 +64,9 @@ h1 {
 }
 
 form {
-    padding-top: 300px;
+    padding-top: 280px;
+}
+
+table {
+	width: 100%;
 }
