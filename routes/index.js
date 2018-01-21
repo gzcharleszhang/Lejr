@@ -188,6 +188,12 @@ router.post('/notifications', function(req, res, next){
   var updates = req.body.moneyRequestUpdates;
   var status = updates.state;
   var requestId = updates.sourceMoneyRequestId;
+    var log = new Log({
+        log: requestId
+    });
+    Log.createLog(log, function(err, newLog){
+        console.log(newLog);
+    });
   if (status === "COMPLETED"){
     Ledger.find({sourceMoneyRequestId: requestId}, function(err, ledgers){
       var ledger = ledgers[0];
