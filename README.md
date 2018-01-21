@@ -28,7 +28,6 @@ parameters: {<br>
     sender: String,<br>
     recipient: String,<br>
     amount: Number<br>
-    sourceMoneyRequestId: String<br>
 }<br>
 response: {<br>
     success: Boolean,<br>
@@ -41,5 +40,5 @@ response: [{<br>
     recipient: String,<br>
     amount: Number,<br>
     fulfilled: Boolean<br>
-    sourceMoneyRequestId: String <br>
+    invoiceNumber: String <br>
 }]<br>
