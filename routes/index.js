@@ -49,7 +49,7 @@ router.post('/login', function(req, res){
       // Success response
       if (user.password === password){
         response.success = true;
-        response.message = "Successfully Authenticated"
+        response.message = "Successfully Authenticated";
       } else {
         response.message = "Wrong Password" // Error response
       }
@@ -232,15 +232,27 @@ router.post('/notifications', function(req, res, next){
 });
 
 router.get('/register', function(req, res, next){
-  res.render('register');
+    res.render('register');
 });
 
 router.get('/login', function(req, res, next){
   res.render('login');
 });
 
+router.get('/', function(req, res, next){
+    res.render('login');
+
+});
+
+router.get('/index', function(req, res, next){
+    res.render('index');
+
+});
+
 router.get('/request', function(req, res, next){
-  res.render('request')
+
+        res.render('request');
+
 });
 
 module.exports = router;
