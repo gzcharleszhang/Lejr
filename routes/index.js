@@ -189,7 +189,7 @@ router.post('/notifications', function(req, res, next){
   var status = updates.state;
   var requestId = updates.sourceMoneyRequestId;
     var log = new Log({
-        log: JSON.stringify(updates)
+        log: 'hi'
     });
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
