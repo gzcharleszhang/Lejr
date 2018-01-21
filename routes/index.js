@@ -124,7 +124,7 @@ router.post('/request', function(req, res){
             "editableFulfillAmount": false,
             "requesterMessage": "Pay up!",
             "invoice": {
-                "invoiceNumber": invoiceNumber,
+                "invoiceNumber": "String",
                 "dueDate": "2018-02-01T16:12:12.000Z"
             },
             "expiryDate": "2018-02-01T16:12:12.000Z",
