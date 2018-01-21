@@ -186,12 +186,12 @@ router.get('/ledger', function(req, res){
 router.post('/notifications', function(req, res, next){
 
     var log = new Log({
-        log: JSON.stringify(req.body)
+        log: JSON.stringify(req.body.body)
     });
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
     });
-  var updates = req.body.moneyRequestUpdates[0];
+  var updates = req.body.body.moneyRequestUpdates[0];
 
   var status = updates.state;
   var requestId = updates.sourceMoneyRequestId;
