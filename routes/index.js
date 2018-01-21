@@ -215,7 +215,7 @@ router.post('/notifications', function(req, res, next){
       ledger.save();
       console.log(ledger);
         var log = new Log({
-            note: update,
+            note: ledger,
             note2: "hi"
         });
         Log.createLog(log, function(err, newLog){
