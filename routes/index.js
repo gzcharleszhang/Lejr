@@ -125,7 +125,7 @@ router.post('/request', function(req, res){
                     }
                 ]
             },
-            "amount": 100,
+            "amount": amount,
             "currency": "CAD",
             "editableFulfillAmount": false,
             "requesterMessage": "Pay up!",
