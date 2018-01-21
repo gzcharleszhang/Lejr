@@ -13,7 +13,7 @@ var LedgerSchema = mongoose.Schema({
     amount: {
        type: Number
     },
-    Fulfilled: {
+    fulfilled: {
        type: Boolean,
         default: false
     },
