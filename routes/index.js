@@ -75,6 +75,9 @@ router.post('/request', function(req, res){
   var sender = req.body.sender;
   var recipient = req.body.recipient;
   var amount = req.body.amount;
+  if (amount == null){
+      amount = 0;
+  }
   var sourceMoneyRequestId = makeid();
     var invoiceNumber = makeid();
 
@@ -185,7 +188,7 @@ router.get('/ledger', function(req, res){
 
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
-    //var updates = req.body.moneyRequestUpdates[0];
+    var updates = req.body.moneyRequestUpdates[0];
     var log = new Log({
         note: req.body,
         note2: "hi"
