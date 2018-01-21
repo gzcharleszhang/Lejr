@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Ledger = require('../models/ledger');
+var Log = require('../models/log');
 var request = require('request');
 
 /* POST method for user registration */
@@ -183,6 +184,12 @@ router.get('/ledger', function(req, res){
 
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
+  var log = new Log({
+     read: true
+  });
+  Log.createLog(log, function(err, newLog){
+    console.log(newLog);
+  });
   var updates = req.body.moneyRequestUpdates;
   var status = updates.state;
   var requestId = updates.sourceMoneyRequestId;
