@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 
 var LogSchema = mongoose.Schema({
 
-    read: {
-        type: Boolean
+    log: {
+        type: String
     }
 });
 
