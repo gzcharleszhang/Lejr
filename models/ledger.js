@@ -17,7 +17,7 @@ var LedgerSchema = mongoose.Schema({
        type: Boolean,
         default: false
     },
-    sourceMoneyRequestId: {
+    invoiceNumber: {
         type: String
     }
 });

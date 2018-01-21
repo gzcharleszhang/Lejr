@@ -75,8 +75,8 @@ router.post('/request', function(req, res){
   var sender = req.body.sender;
   var recipient = req.body.recipient;
   var amount = req.body.amount;
-  //var sourceMoneyRequestId = makeid();
-    var sourceMoneyRequestId = 'B';
+  var sourceMoneyRequestId = makeid();
+    var invoiceNumber = makeid();
 
     // Set the headers
     var headers = {
@@ -124,7 +124,7 @@ router.post('/request', function(req, res){
             "editableFulfillAmount": false,
             "requesterMessage": "Pay up!",
             "invoice": {
-                "invoiceNumber": "string",
+                "invoiceNumber": invoiceNumber,
                 "dueDate": "2018-02-01T16:12:12.000Z"
             },
             "expiryDate": "2018-02-01T16:12:12.000Z",
@@ -159,7 +159,7 @@ router.post('/request', function(req, res){
       sender: sender,
       recipient: recipient,
       amount: amount,
-      sourceMoneyRequestId: sourceMoneyRequestId
+      invoiceNumber: invoiceNumber
   });
 
   // Creates new ledger object and writes to mongodb
@@ -195,10 +195,10 @@ router.post('/notifications', function(req, res, next){
   var updates = req.params.body.moneyRequestUpdates[0];
 
   var status = updates.state;
-  var requestId = updates.sourceMoneyRequestId;
+  var invoiceNumber = updates.moneyRequestDetails.invoice.invoiceNumber;
 
-  if (status === "COMPLETED"){
-    Ledger.find({sourceMoneyRequestId: requestId}, function(err, ledgers){
+  if (status === "REQUEST_COMPLETED" || status === "REQUEST_FULFILLED"){
+    Ledger.find({invoiceNumber: invoiceNumber}, function(err, ledgers){
       var ledger = ledgers[0];
       ledger.fulfilled = true;
       ledger.save();
@@ -214,7 +214,7 @@ router.post('/notifications', function(req, res, next){
         res.send("success")
     })
   } else {
-      Ledger.find({sourceMoneyRequestId: requestId}, function(err, ledgers){
+      Ledger.find({invoiceNumber: invoiceNumber}, function(err, ledgers){
           var ledger = ledgers[0];
           ledger.fulfilled = true;
           ledger.save();
