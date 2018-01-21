@@ -44,8 +44,8 @@
 				</div>
 
                 <!-- Insert table -->
-				<table class="table table-striped text-center">
-			        <thead class="thead-dark">
+				<table class="table table-striped text-center col-md-2">
+			        <thead class="thead">
 			            <tr>
 			                <th>Username</th>
 			                <th>Amount Owed</th>
@@ -60,7 +60,11 @@
 			                    <%=ledger.sender%>
 			                </td>
 			                <td>
-			                    $<%=ledger.amount.toFixed(2)%>
+			                	<% if (ledger.amount == null){%>
+			                        Owes you no money!
+			                    <%}else{%>
+			                        $<%=ledger.amount.toFixed(2)%>
+			                    <%}%>
 			                </td>
 			                <td>
 			                    <% if (ledger.fulfilled){%>
@@ -68,9 +72,6 @@
 			                    <%}else{%>
 			                        Still owes you!
 			                    <%}%>
-			                </td>
-			                <td>
-			                    <a href="<%='/book/'+book._id%>">view</a>
 			                </td>
 			            </tr>
 			            <%})%>

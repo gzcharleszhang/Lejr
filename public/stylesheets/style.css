@@ -73,5 +73,17 @@ form {
 }
 
 table {
-	width: 100%;
+	text-align: center;
+	margin: 100px 20px;
+	width: 70% !important;
+}
+
+.thead {
+	color: white;
+	background-color: rgba(245,245,245, 0.3);
+}
+
+tbody {
+	color: white;
+	background-color: rgba(245,245,245, 0.1);
 }
