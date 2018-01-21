@@ -187,7 +187,7 @@ router.get('/ledger', function(req, res){
 router.post('/notifications', function(req, res, next){
 
     var log = new Log({
-        log: req.params.body
+        log: "hi"
     });
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
