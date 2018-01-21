@@ -192,6 +192,7 @@ router.post('/notifications', function(req, res, next){
     Log.createLog(log, function(err, newLog){
         console.log(newLog);
     });
+
   var updates = req.params.body.moneyRequestUpdates[0];
 
   var status = updates.state;
@@ -204,30 +205,10 @@ router.post('/notifications', function(req, res, next){
       ledger.save();
       console.log(ledger);
 
-
-        var log = new Log({
-            log: ledger
-        });
-        Log.createLog(log, function(err, newLog){
-            console.log(newLog);
-        });
         res.send("success")
     })
   } else {
-      Ledger.find({invoiceNumber: invoiceNumber}, function(err, ledgers){
-          var ledger = ledgers[0];
-          ledger.fulfilled = true;
-          ledger.save();
-          console.log(ledger);
-          var log = new Log({
-              log: ledger
-          });
-          Log.createLog(log, function(err, newLog){
-              console.log(newLog);
-          });
-          res.send("success")
-      })
-      //res.send("error")
+      res.send("error")
   }
 });
 
