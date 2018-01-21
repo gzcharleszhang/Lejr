@@ -21,7 +21,7 @@
 
         <title>Lejr</title>
     </head>
-    <body>
+    <body background="../images/trees.jpg" style="background-position: center;">
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="/index">Lejr</a>
             <ul class="navbar-nav">
@@ -29,7 +29,7 @@
                 <a class="nav-link" href="/index">Home</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="/request">Loan Request <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/request">Request <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -38,7 +38,10 @@
         </nav>
         <div class="container">
             <div class="row">
-                <h1 class="page-header col-md-6">Lejr</h1>
+                <div class="page-header col-md-6">
+					<h1>Lejr</h1>
+					<h4><em>Requesting your money, for you.</em></h4>
+				</div>
 
                 <form class="col-md-4" action="/request" method="post">
                     <div class="form-group text-center">
@@ -51,7 +54,7 @@
                         <input class="form-control" type="number" placeholder="How much money?" name="amount">
                     </div>
                     <div class="form-group text-center button">
-                        <button class="btn" type="submit">Request</button>
+                        <button class="btn" type="submit">Send an Interac Request</button>
                     </div>
                 </form>
             </div>
