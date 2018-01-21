@@ -27,7 +27,7 @@ router.post('/register', function(req, res, next) {
         message: "Successfully registered user"
     };
 
-    res.send(response);
+    res.redirect('/login');
   });
 });
 
@@ -56,8 +56,9 @@ router.post('/login', function(req, res){
     } else {
       response.message = "User does not exist" // Error response
     }
-    res.send(response);
+
   })
+    res.redirect('/index');
 });
 
 // POST method for money request
@@ -155,7 +156,7 @@ router.post('/request', function(req, res){
                 paymentURL = result.paymentGatewayUrl;
             //console.log(paymentURL);
             console.log(paymentURL);
-            res.send(paymentURL);
+            res.redirect('/index');
         })
 
     });
@@ -180,53 +181,15 @@ router.post('/request', function(req, res){
 });
 
 
-// GET method for ledger
-router.get('/ledger', function(req, res){
-  // Finds and returns all ledgers in mongodb
-  Ledger.find().exec(function(error, ledgers){
-    res.send(ledgers);
-  })
-});
-
 // POST method for notifications (callback from Interac)
 router.post('/notifications', function(req, res, next){
-
-    //var updates = req.body.moneyRequestUpdates;
-    //var update = updates[1];
-    var log = new Log({
-        note: req.body,
-        note2: "hi"
-    });
-    Log.createLog(log, function(err, newLog){
-        console.log(newLog);
-        res.send("success");
-    });
-
-/*
-  var updates = req.body.moneyRequestUpdates[1];
-
-  var status = updates.state;
-  var invoiceNumber = updates.moneyRequestDetails.invoice.invoiceNumber;
-    var log = new Log({
-        note: invoiceNumber,
-        note2: "hi"
-    });
-    Log.createLog(log, function(err, newLog){
-        console.log(newLog);
-        res.send("success");
-    });
-  if (status === "REQUEST_COMPLETED" || status === "REQUEST_FULFILLED"){
-    Ledger.find({invoiceNumber: invoiceNumber}, function(err, ledgers){
-      var ledger = ledgers[0];
-      ledger.fulfilled = true;
-      ledger.save();
-      console.log(ledger);
-
-        res.send("success")
+    Ledger.find({fulfilled: "Jason"}, function(err, ledgers){
+        ledgers.forEach(function(ledger){
+            ledger.fulfilled = true;
+            ledger.save();
+            res.send("success");
+        })
     })
-  } else {
-      res.send("error")
-  }*/
 });
 
 router.get('/register', function(req, res, next){
