@@ -24,6 +24,12 @@ h1 {
     text-align: center;
 }
 
+h4 {
+	padding-top: 40px;
+	color: white;
+	text-align: center;
+}
+
 .btn {
 	background-color: rgba(245,245,245, 0.7);
 }

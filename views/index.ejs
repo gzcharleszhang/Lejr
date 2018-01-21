@@ -38,10 +38,45 @@
         </nav>
         <div class="container">
             <div class="row">
-                <h1 class="page-header col-md-6">Lejr</h1>
+                <div class="page-header col-md-6">
+					<h1>Lejr</h1>
+					<h4><em>Requesting your money, for you.</em></h4>
+				</div>
 
                 <!-- Insert table -->
-                <table></table>
+				<table class="table table-striped text-center">
+			        <thead class="thead-dark">
+			            <tr>
+			                <th>Username</th>
+			                <th>Amount Owed</th>
+			                <th>Status</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        <% if (ledgers.length > 0){ %>
+			            <% ledgers.forEach(function(ledger){ %>
+			            <tr>
+			                <td>
+			                    <%=ledger.sender%>
+			                </td>
+			                <td>
+			                    $<%=ledger.amount.toFixed(2)%>
+			                </td>
+			                <td>
+			                    <% if (ledger.fulfilled){%>
+			                        Repaid!
+			                    <%}else{%>
+			                        Still owes you!
+			                    <%}%>
+			                </td>
+			                <td>
+			                    <a href="<%='/book/'+book._id%>">view</a>
+			                </td>
+			            </tr>
+			            <%})%>
+			        <%}%>
+			        </tbody>
+			    </table>
             </div>
         </div>
         <% include templates/footer.ejs%>
