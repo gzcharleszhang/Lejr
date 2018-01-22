@@ -1,7 +1,7 @@
-# LejrBackend
+# Lejr - Winner of RBC's Best REST API Prize at UofTHacks V
 
-HTTP Request URL: https://lejrbackend.herokuapp.com/
-<br>
+HTTP Request URL: https://lejrbackend.herokuapp.com/ <br>
+To Use the API: <br>
 POST - /register<br>
 parameters: { <br>
     username: String,<br>
