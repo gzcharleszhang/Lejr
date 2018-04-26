@@ -19,7 +19,8 @@ var LedgerSchema = mongoose.Schema({
         default: false
     },
     invoiceNumber: {
-        type: String
+        type: String,
+        default: 'p9fnqwkfnpoie'
     }
 });
 
